@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Organises the measured (time & memory) execution of Swarm with 
+# Organises the measured (time & memory) execution of Swarm (v2) with 
 # different parameters / options.
 
 
@@ -22,13 +22,15 @@ FASTIDIOUS=$7
 
 # non-fastidious
 if [ "${NON_FASTIDIOUS}" == "1" ]; then
-	${LOG_CMD} ${SWARM} -d ${THRESHOLD} -a 1 -o ${RESULTS}_o_${THRESHOLD}.csv ${INFILE}
-	rm ${RESULTS}_o_${THRESHOLD}.csv
+	RES=${RESULTS}_o_${THRESHOLD}.csv
+	${LOG_CMD} ${SWARM} -d ${THRESHOLD} -o ${RES} -a 1 ${INFILE}
+	rm ${RES}
 fi
 
 # fastidious
 if [ "${THRESHOLD}" == "1" ] && [ "${FASTIDIOUS}" == "1" ]; then
-	${LOG_CMD} ${SWARM} -f -d ${THRESHOLD} -a 1 -o ${RESULTS}_o_${THRESHOLD}_f.csv ${INFILE}
-	rm ${RESULTS}_o_${THRESHOLD}_f.csv
+	RES=${RESULTS}_o_${THRESHOLD}_f.csv
+	${LOG_CMD} ${SWARM} -f -d ${THRESHOLD} -o ${RES} -a 1 ${INFILE}
+	rm ${RES}
 fi
 

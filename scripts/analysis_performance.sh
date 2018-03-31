@@ -5,7 +5,8 @@
 
 
 
-SWARM=tools/Swarm-2.1.13
+SWARM_V1=tools/Swarm-1.2.3
+SWARM_V2=tools/Swarm-2.1.13
 GEFAST=tools/GeFaST
 
 
@@ -24,11 +25,17 @@ echo "time,memory,cmd" > ${LOG_FILE}
 for ((T=${MIN_T}; T<=${MAX_T}; T++))
 do
 
-	# Swarm
-	bash scripts/swarm.sh ${SWARM} ${T} ${INFILE} ${OUTDIR}/swarm ${LOG_FILE} 1 1
+	# Swarm v1
+#	bash scripts/swarm-v1.sh ${SWARM_V1} ${T} ${INFILE} ${OUTDIR}/swarm-v1 ${LOG_FILE}
+
+	# Swarm v2
+	bash scripts/swarm-v2.sh ${SWARM_V2} ${T} ${INFILE} ${OUTDIR}/swarm-v2 ${LOG_FILE} 1 1
 
 	# GeFaST
-	bash scripts/gefast.sh ${GEFAST} ${T} ${INFILE} ${OUTDIR}/gefast ${LOG_FILE} 0 1 1 1 0
+	bash scripts/gefast.sh ${GEFAST} ${T} ${INFILE} ${OUTDIR}/gefast ${LOG_FILE} 0 1 1 1 0 0 1
+
+	# others
+#	bash scripts/others.sh ${T} ${INFILE} ${OUTDIR} ${LOG_FILE}
 
 done
 

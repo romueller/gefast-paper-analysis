@@ -5,7 +5,7 @@
 #
 # File: https://github.com/torognes/vsearch-eval/blob/master/cluster/scripts/tax.sh
 #
-# Determines the ground truth by matching against the 16S rRNA reference sequences
+# Determines the ground truth by matching against the reference sequences
 
 
 
@@ -14,10 +14,11 @@ THREADS=$2
 FASTA=$3
 REFS=$4
 ASSIGNMENTS=$5
+THRESHOLD=$6
 
 ${USEARCH} --usearch_global ${FASTA} \
         --db ${REFS} \
-        --id 0.95 \
+        --id ${THRESHOLD} \
         --blast6out ${ASSIGNMENTS} \
         --strand plus \
         --threads ${THREADS}

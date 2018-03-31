@@ -12,8 +12,8 @@
 
 
 # scripts
-BUILD_CONFUSION_TABLE=scripts/confusion_table.py
-COMPUTE_CLUSTER_METRICS=scripts/CValidate.pl
+BUILD_CONFUSION_TABLE=scripts/confusion_table_reduced.py
+COMPUTE_CLUSTER_METRICS=scripts/CValidate_reduced.pl
 
 # inputs
 CLUSTERING_RESULTS=$1
