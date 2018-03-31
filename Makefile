@@ -1,12 +1,12 @@
 # Sets up all the tools necessary for the analyses
 # with the exception of USEARCH:
 # It has to be downloaded manually (http://www.drive5.com/usearch/)
-# and the path to the binary has to be set accordingly in
-# scripts/analysis_quality.sh.
+# and the path to the binary has to be set accordingly in scripts/others.sh,
+# scripts/analysis_quality.sh and scripts/analysis_subsamples_fixed.sh.
 
 
 
-all: sampler swarm-v1 swarm-v2 gefast
+all: sampler swarm-v1 swarm-v2 gefast vsearch cdhit dnaclust sumaclust
 	
 
 ### Compile FastaSampler
@@ -38,6 +38,38 @@ gefast:
 	cp tools/gefast/build/GeFaST tools/GeFaST
 
 
+### Download & build VSEARCH (v2.7.1)
+vsearch:
+	git clone https://github.com/torognes/vsearch.git tools/vsearch-repo
+	git -C tools/vsearch-repo checkout f9960d249b5637d0704e2cc3b9e3fa71573c8ee3
+	cd tools/vsearch-repo/; ./autogen.sh; ./configure; make
+	cp tools/vsearch-repo/bin/vsearch tools/vsearch
+
+### Download & build CD-HIT (v4.6.8)
+cdhit:
+	wget -P tools/ https://github.com/weizhongli/cdhit/releases/download/V4.6.8/cd-hit-v4.6.8-2017-1208-source.tar.gz
+	cd tools; tar -zxvf cd-hit-v4.6.8-2017-1208-source.tar.gz
+	cd tools/cd-hit-v4.6.8-2017-1208/; make
+	cp tools/cd-hit-v4.6.8-2017-1208/cd-hit tools/cd-hit
+	rm tools/cd-hit-v4.6.8-2017-1208-source.tar.gz
+
+### Download & build DNACLUST (release 3)
+dnaclust:
+	wget -P tools/ https://downloads.sourceforge.net/project/dnaclust/parallel_release_3/dnaclust_linux_release3.zip
+	unzip tools/dnaclust_linux_release3.zip -d tools/
+	cp tools/dnaclust_linux_release3/dnaclust tools/dnaclust
+	rm tools/dnaclust_linux_release3.zip
+
+### Download & build Sumaclust (v1.0.31)
+sumaclust:
+	wget -P tools/ https://git.metabarcoding.org/obitools/sumaclust/uploads/59ff189079b9e318f07b9ff9d5fee54b/sumaclust_v1.0.31.tar.gz
+	cd tools; tar -zxvf sumaclust_v1.0.31.tar.gz
+	cd tools/sumaclust_v1.0.31/; make
+	cp tools/sumaclust_v1.0.31/sumaclust tools/sumaclust
+	rm tools/sumaclust_v1.0.31.tar.gz
+
+
+
 ### Remove all created files
 .PHONY: clean
 clean:
@@ -46,3 +78,7 @@ clean:
 	rm -f tools/Swarm-*
 	rm -rf tools/gefast
 	rm -f tools/GeFaST
+	rm -rf tools/cd-hit*
+	rm -rf tools/dnaclust*
+	rm -rf tools/sumaclust*
+	rm -rf tools/vsearch*

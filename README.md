@@ -17,17 +17,22 @@ To recreate the visualisations from existing analysis results, run `./revisualis
 ## Required software
  * [GeFaST](https://github.com/romueller/gefast) (version 1.0.0)
  * [Swarm](https://github.com/torognes/swarm) (version 1.2.3 and version 2.1.13)
- * [USEARCH](http://www.drive5.com/usearch/download.html) (version 7)
+ * [USEARCH](http://www.drive5.com/usearch/download.html) (version 10)
+ * [VSEARCH](https://github.com/torognes/vsearch) (version 2.7.1)
+ * [CD-HIT](https://github.com/weizhongli/cdhit) (version 4.6.8)
+ * [DNACLUST](http://dnaclust.sourceforge.net/) (release 3)
+ * [Sumaclust](https://git.metabarcoding.org/obitools/sumaclust/wikis/home) (version 1.0.31)
  * [seqtk](https://github.com/lh3/seqtk) (version 1.2-r95-dirty)
  * GCC (version 4.9.2 or higher)
  * python (version 2.7 or higher; with Biopython)
  * perl (version 5.20.2 or higher)
  * make (version 4.0 or higher)
- * R / Rscript (version 3.3.2 or higher; with packages dplyr, ggplot2, grid, gridExtra and reshape2)
+ * R / Rscript (version 3.3.2 or higher; with packages dplyr, ggplot2, grid, gridExtra, RColorBrewer and reshape2)
  * /usr/bin/time (external command)
- * common Unix tools (bash, bzip2, cat, wget)
+ * common Unix tools (awk, bash, bzip2, cat, cut, wget, sed, shuf)
 
 _Notes:_
-Older versions of GCC, python, perl etc. might also work, but have not been tested. 
-Makefile takes care of GeFaST and Swarm, while the other software prerequisites have to be satisfied by the user.  
+Older versions of GCC, python, perl etc. might also work but have not been tested. 
+Makefile takes care of GeFaST, Swarm, VSEARCH, CD-HIT, DNACLUST and Sumaclust, 
+while the other software prerequisites have to be satisfied by the user.  
 The location of the binaries of software such as seqtk has to be in `PATH`.
