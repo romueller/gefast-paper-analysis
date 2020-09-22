@@ -1,6 +1,6 @@
-# GeFaST: An improved method for OTU assignment by generalising Swarm's fastidious clustering approach (submitted) 
+# Evaluation of extended fastidious clustering implemented in GeFaST
 
-Scripts for the evaluation of GeFaST's extended fastidious-clustering capabilities.
+Scripts for the evaluation of GeFaST's extended fastidious-clustering capabilities as presented in [*GeFaST: An improved method for OTU assignment by generalising Swarm's fastidious clustering approach*](https://doi.org/10.1186/s12859-018-2349-1).
 
 
 ## How to use it
@@ -32,6 +32,7 @@ To recreate the visualisations from existing analysis results, run `./revisualis
  * common Unix tools (awk, bash, bzip2, cat, cut, wget, sed, shuf)
 
 _Notes:_
+The scripts in this repository are not designed for more recent versions of GeFaST (2.0.0 or higher).   
 Older versions of GCC, python, perl etc. might also work but have not been tested. 
 Makefile takes care of GeFaST, Swarm, VSEARCH, CD-HIT, DNACLUST and Sumaclust, 
 while the other software prerequisites have to be satisfied by the user.  
